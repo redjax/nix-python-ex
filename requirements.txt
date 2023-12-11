@@ -1,0 +1,36 @@
+annotated-types==0.6.0
+anyio==4.1.0
+arrow==1.3.0
+backports.entry-points-selectable @ file:///build/backports.entry_points_selectable-1.1.1/dist/backports.entry_points_selectable-1.1.1-py2.py3-none-any.whl
+black @ file:///build/black-22.10.0/dist/black-22.10.0-py3-none-any.whl
+certifi==2023.11.17
+click @ file:///build/click-8.1.3/dist/click-8.1.3-py3-none-any.whl
+diskcache==5.6.3
+distlib @ file:///build/distlib-0.3.6/dist/distlib-0.3.6-py2.py3-none-any.whl
+exceptiongroup==1.2.0
+filelock @ file:///build/filelock-3.8.0/dist/filelock-3.8.0-py3-none-any.whl
+greenlet==3.0.2
+h11==0.14.0
+httpcore==1.0.2
+httpx==0.25.2
+idna==3.6
+loguru==0.7.2
+msgpack==1.0.7
+mypy-extensions @ file:///build/source/dist/mypy_extensions-0.4.3-py2.py3-none-any.whl
+pathspec @ file:///build/pathspec-0.10.1/dist/pathspec-0.10.1-py3-none-any.whl
+pendulum==2.1.2
+platformdirs @ file:///build/source/dist/platformdirs-2.5.2-py3-none-any.whl
+pydantic==2.5.2
+pydantic-settings==2.1.0
+pydantic_core==2.14.5
+python-dateutil==2.8.2
+python-dotenv==1.0.0
+pytzdata==2020.1
+red_utils==0.2.3
+six @ file:///build/six-1.16.0/dist/six-1.16.0-py2.py3-none-any.whl
+sniffio==1.3.0
+SQLAlchemy==2.0.23
+tomli @ file:///build/source/dist/tomli-2.0.1-py3-none-any.whl
+types-python-dateutil==2.8.19.14
+typing_extensions==4.9.0
+virtualenv @ file:///build/virtualenv-20.16.5/dist/virtualenv-20.16.5-py3-none-any.whl

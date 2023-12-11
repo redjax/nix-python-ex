@@ -23,23 +23,28 @@ in
         ## Inherit inputs from the build import
         inputsFrom = [ build ];
         packages = with pkgs; [
+            which
+            libgcc
+            cmake
+            gnumake
             curl
             git
             python311
+            # pdm
             ruff
             black
             virtualenv
-            (pkgs.python311.withPackages (ps: [
-                ps.jupyter
-                ps.ipykernel
-            ]))
         ];
 
         ## Create a shell hook to automatically create the project's .venv,
         #  as well as activate it when this environment is called with nix-shell
+        #  The odd syntax of this command is so vscode's python extension can read the .venv
         shellHook = ''
+            # venv="$(cd $(dirname $(which python)); cd ..; pwd)"
+            # ln -Tsf "$venv" .venv
+
             virtualenv .venv
             source .venv/bin/activate
         '';
-    };
+        };
 }
