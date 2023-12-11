@@ -1,11 +1,15 @@
 {
-  description = "A very basic flake";
+  inputs = {
+    nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
+  };
 
-  outputs = { self, nixpkgs }: {
-
-    packages.x86_64-linux.hello = nixpkgs.legacyPackages.x86_64-linux.hello;
-
-    packages.x86_64-linux.default = self.packages.x86_64-linux.hello;
-
+  outputs = inputs: {
+    packages."x86_x64-linux".default = derivation {
+      name = "simple";
+      builder = "${inputs.nixpkgs.legacyPackages."x86_x64-linux".bash}/bin/bash";
+      args = [ "-c" "echo foo > $out" ];
+      src = ./.;
+      system = "x86_x64-linux";
+    };
   };
 }
