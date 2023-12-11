@@ -1,46 +1,18 @@
 {
-    description = "Example Python package, running in a Nix environment.";
+  description = "Example Python package with a NixOS flake.";
 
-    ## Flake inputs
-    inputs = {
-        nixpkgs.url = "github:NixOS/nixpkgs";
+  inputs.nixpkgs.url = "github:NixOS/nixpkgs/nixos-22.11";
+
+  outputs = { self, nixpkgs }: {
+
+    defaultPackage.x86_x64-linux =
+    with import nixpkgs { system = "x86_x64-linux"; };
+    stdenv.mkDerivation {
+      name = "hello";
+      src = self;
+      buildPhase = "gcc -o hello ./hello.c";
+      installPhase = "mkdir -p $out/bin; install -t $out/bin hello";
     };
 
-    ## Flake outputs
-    outputs = {
-        self,
-        nixpkgs,
-    }: let
-        ## Supported systems
-        allSystems = [
-            "x86_x64-linux"
-            "aarch64-linux"
-        ];
-
-        ## Helper, provides attributes based on system type
-        forAllSystems = f:
-            nixpkgs.lib.genAttrs allSystems (system:
-                f {
-                    pkags = import nixpkgs {inherit system;};
-                });
-        in {
-            ## Development environment output
-            devShells = forAllSystems({pkgs}: {
-                default = let
-                    ## Use Python 3.11
-                    python = pkgs.python311;
-                in
-                    pkgs.mkShell {
-                        ## Packages provided to environment by Nix
-                        packages = [
-                            ## Python plus helper tools
-                            (python.withPackages (ps:
-                                with ps; [
-                                    jwcrypto
-                                ]
-                            ))
-                        ];
-                    };
-            });
-        };
+  };
 }
